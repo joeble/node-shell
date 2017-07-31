@@ -1,4 +1,4 @@
-// console.log(process);
+let commands = require('./commands');
 
 process.stdout.write('prompt > ');
 
@@ -9,11 +9,11 @@ process.stdin.on('data', function (data) {
   // process.stdout.write('You typed: ' + cmd);
 
   if (cmd === 'pwd'){
-    process.stdout.write(process.env.PWD);
-  }
-  if (cmd === 'date'){
-    let dateBoy = new Date().toString();
-    process.stdout.write(dateBoy);
+    commands.pwd();
+  } else if (cmd === 'date'){
+    commands.date();
+  } else {
+
   }
 
   process.stdout.write('\nprompt > ');
