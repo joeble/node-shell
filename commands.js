@@ -1,4 +1,5 @@
 let fs = require('fs');
+let request = require('request');
 
 module.exports = {
   pwd: function(){
@@ -62,16 +63,14 @@ module.exports = {
       }
       process.stdout.write('prompt >');
     });
-  }
+  },
 
-  // ls: function(){
-  //     let output = '';
-  //     fs.readdirSync('.', function(err, files){
-  //       if (err) throw err;
-  //       files.forEach(function(file){
-  //         output += (file + '\n');
-  //       });
-  //     });
-  //     return output;
-  // }
+  curl: function(args){
+    let url = 'http://'+args[1];
+    request(url, function (error, response, body) {
+      console.log('error:', error); // Print the error if one occurred
+      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      console.log('body:', body); // Print the HTML for the Google homepage.
+    });
+  }
 }
