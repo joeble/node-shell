@@ -6,16 +6,14 @@ process.stdout.write('prompt > ');
 process.stdin.on('data', function (data) {
   let cmd = data.toString().trim(); // remove the newline
 
-  // process.stdout.write('You typed: ' + cmd);
-
-  if (cmd === 'pwd'){
-    commands.pwd();
-  } else if (cmd === 'date'){
-    commands.date();
-  } else {
-
+  let runCMD = function(){
+    if (commands[cmd]){
+      return commands[cmd]();
+    } else {
+      return 'You typed: ' + cmd;
+    }
   }
+  process.stdout.write(runCMD() + '\nprompt > ');
 
-  process.stdout.write('\nprompt > ');
 
 });

@@ -1,11 +1,9 @@
 module.exports = {
   pwd: function(){
-    let output = process.env.PWD;
-    process.stdout.write(output);
+    return process.env.PWD;
   },
 
   date: function(){
-    let dateBoy = new Date().toString();
-    process.stdout.write(dateBoy);
+    return new Date().toString();
   }
 }
